@@ -1,0 +1,32 @@
+def moore_automaton(input_string):
+    state = 'S0'
+    output = ''
+
+    for char in input_string:
+        if state == 'S0':
+            if char == '0':
+                output += '0'
+            elif char == '1':
+                state = 'S1'
+                output += '0'
+        elif state == 'S1':
+            if char == '0':
+                state = 'S0'
+                output += '0'
+            elif char == '1':
+                state = 'S2'
+                output += '0'
+        elif state == 'S2':
+            if char == '0':
+                state = 'S0'
+                output += '0'
+            elif char == '1':
+                state = 'S1'
+                output += '0'
+
+    return output
+
+# Ejemplo de uso
+input_string = "1101101"
+output_string = moore_automaton(input_string)
+print(f"Entrada: {input_string}, Salida: {output_string}")
